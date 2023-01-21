@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container" id="generateimgform">
+        <form class="shadow p-4 mb-4 bg-light rounded">
+            <h3>AI Image Generator</h3>
+            <div class="form-group">
+                <label for="prompt">Text:</label>
+                <input type="text" id="prompt" name="prompt" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="size_option">Image Size:</label>
+                <select id="size_option" name="size_option" class="form-control">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="big">Big</option>
+                </select>
+            </div>
+            <button type="button" id="generate-btn" class="btn btn-primary">Generate Image</button>
+        </form>
+        <br>
+
+        <div id="progress-bar" class="progress" style="display: none;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+          
+    </div>
+    <div id="image-container"></div>
+    <script>
+        $("#generate-btn").click(function() {
+            $("#progress-bar").show();
+            $('html, body').animate({
+                        scrollTop: $("#progress-bar").offset().top
+                    }, 2000);
+            $(".progress-bar").css("width", "0%");
+            var prompt = $("#prompt").val();
+            var size_option = $("#size_option").val();
+            var progress = 0;
+            var interval = setInterval(function(){
+                progress += 3;
+                $(".progress-bar").css("width", progress + "%");
+                if(progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 100);
+            $.ajax({
+                type: "POST",
+                url: "{% url 'generate_image' %}",
+                data: {
+                    prompt: prompt,
+                    size_option: size_option,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success: function(data) {
+                    $("#image-container").html(data);
+                    $("#progress-bar").hide();
+                    $("#generateimgform").hide(1000);
+                    $("#image-container").show(1000);
+                }
+            });
+        });
+
+        function generateNew()
+        {
+            $("#image-container").hide();
+            $("#generateimgform").fadeIn();
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+<div class="shadow p-4 mb-4 mt-2 bg-light rounded">
+    <h3>AI Generated Image</h3>
+    <p><b>Entered Text: </b>{{ prompt }}</p>
+    <img src="{{ image_url }}" alt="Generated Image" class="img-fluid">
+    <br>
+    <br>
+    <a href="{{ image_url }}" download="ai_generated_image.jpg" class="btn btn-primary">Download</a>
+    <button type="button" id="generate-new-btn" class="btn btn-primary" onclick="generateNew();">Generate New Image</button>
+</div>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to the Power of AI</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" />
+    <style>
+        #hamburger-menu {
+        font-size: 1.5em;
+        cursor: pointer;
+        color: darkgray;
+        }
+
+        #hamburger-menu:hover{
+            color:beige;
+        }
+
+        #logo {
+        margin-top: 6px;
+        font-size: 1.4em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        }
+
+        #instagram-icon {
+        font-size: 1.5em;
+        cursor: pointer;
+        color:darkgray;
+        }
+
+        #instagram-icon a {
+        color:darkgray;
+        text-decoration: none;
+        }
+
+        #instagram-icon a:hover {
+        color:beige;
+        }
+
+        #menu {
+        top: 60px;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
+        }
+
+        #menu ul {
+        background-color: #333;
+        }
+
+        #menu li, li a {
+        list-style: none;
+        padding: 10px;
+        color:darkgray;
+        font-size: 18px;
+        }
+        #menu li:hover {
+        background-color: #444;
+        cursor: pointer;
+        }
+        #menu li a:hover {
+        color:beige;
+        }
+        #menu.d-none {
+        animation: slideDown 0.5s;
+        }
+        
+        #header-container {
+            position: relative;
+
+        }
+        #content {
+            margin-bottom: 50px;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 10px;
+            z-index: 1000;
+        }
+
+        #footer p {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="header-container">
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="d-flex flex-grow-1">
+            <div class="w-100 text-left navbar-brand" id="instagram-icon">
+                <a href="https://www.instagram.com/theitguy_">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            <a class="badge badge-dark badge-pill" id="logo" href="#">
+                AI Image Generate
+            </a>
+                <div class="w-100 text-right navbar-brand" id="hamburger-menu">
+                    <i class="fas fa-bars small"></i>
+                  </div>
+        </div>
+    </nav>
+    <div id="menu" class="menu d-none flex-grow-1 text-right">
+        <ul class="nav navbar-nav">
+            <li><a href="/"><i class="fa fa-home small"></i> Home</a></li>
+            <li><a href="https://github.com/kumarbijay"><i class='fab fa-github'></i> GitHub</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="text-center mt-2">
+    <span class="badge badge-dark badge-pill">
+   A Django App Crafted by Bijay Kumar
+    </span>
+</div>
+
+      <div class="container" id="content">
+        <div class="row">
+            <div class="col-md-12">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+<div id="footer">
+    <div class="container">
+        <p>© 2023 - The IT Guy</p>
+    </div>
+</div>
+
+<script>
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+    const menu = document.getElementById("menu");
+    hamburgerMenu.addEventListener("click", function() {
+        if (menu.classList.contains("d-none")) {
+            menu.classList.remove("d-none");
+        } else {
+            menu.classList.add("d-none");
+        }
+    });
+   </script>
