@@ -68,3 +68,12 @@ TextToImageDjango/
     
 ## Conclusion
 TextToImageDjango is a simple and easy-to-use Django-based web application that allows users to generate images from text descriptions. Feel free to use, modify and extend the code as per your needs.
+
+## License
+This project is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) license.
+
+The full text of the license can be found here: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+In summary, the CC BY-NC-ND license allows others to download and share the material with proper attribution, but they cannot change or use it commercially.
+
+If you use this project, you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not use the material for commercial purposes and you may not distribute derivatives of the material.
